@@ -16,7 +16,7 @@ public class ContaBancariaTest {
 	@Before
 	public void init() {
 		Cliente cliente = new Cliente("Maiko Cunha", "99999999999");
-		 conta = new ContaBancaria("1234", "0004", 1000.0, ContaBancariaTipo.CORRENTE, cliente);
+	    conta = new ContaBancaria("1234", "0004", 1000.0, ContaBancariaTipo.CORRENTE, cliente);
 
 	}
 
@@ -30,6 +30,24 @@ public class ContaBancariaTest {
 	@Test(expected = RuntimeException.class)
 	public void deveRetornarErroQuandoSaldoMenorQueSaque() {
 		conta.sacar(2000.0);
+	}
+	
+	@Test
+	public void deveDepositarDinheiroNaConta(){
+		conta.depositar(1000.00);
+		Assert.assertEquals(2000.0, conta.getSaldo(), 0);
+		Assert.assertEquals(1, conta.getHistorico().size());
+		
+	}
+	@Test(expected = RuntimeException.class)
+	public void deveRetornarExceptionNaConta(){
+		conta.depositar(-1000.00);
+		
+	}
+	@Test(expected = RuntimeException.class)
+	public void deveRetornarExceptionNaContaQuandoValorIgualaZero(){
+		conta.depositar(0.00);
+		
 	}
 
 }

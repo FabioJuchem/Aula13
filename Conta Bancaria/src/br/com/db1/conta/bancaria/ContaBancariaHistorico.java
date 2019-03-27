@@ -6,13 +6,13 @@ public class ContaBancariaHistorico {
 	
 	private LocalDateTime data;
 
-	private ContaCorrenteTipoOperacao tipoOperacao;
+	private ContaBancariaTipoOperacao tipoOperacao;
 	
 	private Double valor;
 	
 	//construtores
 
-	public ContaBancariaHistorico(ContaCorrenteTipoOperacao tipoOperacao, Double valor) {
+	public ContaBancariaHistorico(ContaBancariaTipoOperacao tipoOperacao, Double valor) {
 		this.data = LocalDateTime.now();
 		this.tipoOperacao = tipoOperacao;
 		this.valor = valor;
